@@ -28,7 +28,7 @@ class Login(Resource):
         parser.add_argument("username", type=str, required=True, nullable=False)
         parser.add_argument("password", type=str, required=True, nullable=False)
         args = parser.parse_args()
-        return controllers.get_access_token(args)
+        return controllers.get_access_token(args["username"], args["password"])
     
 
 @api.route("/refresh-token")

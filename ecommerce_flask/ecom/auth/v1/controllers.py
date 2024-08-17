@@ -3,10 +3,6 @@ import calendar
 import logging
 from datetime import datetime, timedelta
 
-import msal
-import pyotp
-import pytz
-import requests
 from flask import current_app as app
 from flask import request, url_for
 from flask_praetorian.exceptions import AuthenticationError, PraetorianError
@@ -81,5 +77,5 @@ def verify_old_password_and_update_password(username, old_password, new_password
         return Response.failure(500, payload=str(exc))
     
     User.update_user(user.user_id, password=new_password)
-    return Response.success("Token verified and Password Updated Successfully")
+    return Response.success("Password Updated Successfully")
 

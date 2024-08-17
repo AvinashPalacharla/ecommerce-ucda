@@ -13,13 +13,13 @@ USERS_SEED_DATA = [
     {
         "first_name": "admin",
         "last_name": "admin",
-        "email": "admin@mycervello.com",
+        "email": "admin@gmail.com",
         "role": "Admin",
     },
     {
         "first_name": "guest",
         "last_name": "guest",
-        "email": "guest@mycervello.com",
+        "email": "guest@gmail.com",
         "role": "Admin",
     },
 ]

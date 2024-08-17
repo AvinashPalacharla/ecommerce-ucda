@@ -11,7 +11,7 @@ pytest-flask = "*"
 requests-mock = "*"
 
 [packages]
-flask = "==2.0.3"
+flask = "*"
 flask-restx = "==0.5.1"
 werkzeug = "==2.0.3"
 python-dotenv = "*"
@@ -34,7 +34,7 @@ pyexcel-xlsx = "*"
 sqlacodegen = "*"
 flask-admin = "*"
 flask-basicauth = "*"
-flask-sqlalchemy = "==2.5.1"
+flask-sqlalchemy = "*"
 sqlalchemy = "==1.4.39"
 flask-compress = "*"
 xlsxwriter = "*"
@@ -55,7 +55,6 @@ cffi = "*"
 flower = "*"
 zipp = "==3.9.0"
 numerize = "*"
-
 geopy = "*"
 flask-limiter = {extras = ["redis"], version = "*"}
 

@@ -43,6 +43,7 @@ logging.basicConfig(
     level=logging.INFO,
 )
 
+
 def create_app():
     """Create the flask app and intialize all the extensions"""
 

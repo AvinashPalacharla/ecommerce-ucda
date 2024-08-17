@@ -3,11 +3,7 @@ from flask.cli import AppGroup, with_appcontext
 from flask import current_app as app
 from os import getenv
 
-from ecom.commands_seed_data import (
-    create_roles,
-    create_users,
-    flask_profiler
-)
+from ecom.commands_seed_data import create_roles, create_users, flask_profiler
 from ecom.extensions import db, cache
 
 
@@ -19,7 +15,6 @@ ecom_cli = AppGroup("ecom", help="ECOM custom CLI commands")
 def create_roles_command():
     """create_roles command used to create initial/dummy users for the application."""
     create_roles()
-
 
 
 @ecom_cli.command(name="create_users")
@@ -57,5 +52,3 @@ def deploy():
         )
 
     return
-
-

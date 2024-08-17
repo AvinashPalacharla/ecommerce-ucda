@@ -35,7 +35,6 @@ class BaseConfig(object):
     BASIC_AUTH_USERNAME = os.getenv("ADMIN_USERNAME")
     BASIC_AUTH_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
-
     """ if APP_DB_USE_SSL:
         SQLALCHEMY_ENGINE_OPTIONS = {
             "connect_args": {
@@ -46,9 +45,7 @@ class BaseConfig(object):
                 },
             }
         } """
-    SQLALCHEMY_DATABASE_URI = (
-        f"mysql+mysqlconnector://{APP_DB_USER}:{quote_plus(APP_DB_SECRET)}@{APP_DB_HOST}:{APP_DB_PORT}/{APP_DB_NAME}"
-    )
+    SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{APP_DB_USER}:{quote_plus(APP_DB_SECRET)}@{APP_DB_HOST}:{APP_DB_PORT}/{APP_DB_NAME}"
 
     # to disable logs of sqlalchemy
     SQLALCHEMY_ECHO = False
@@ -77,7 +74,6 @@ class BaseConfig(object):
     )
 
     REFRESH_DATA_TOKEN = os.getenv("REFRESH_DATA_TOKEN", "")
-
 
     BASIC_AUTH_USERNAME = os.getenv("ADMIN_USERNAME")
     BASIC_AUTH_PASSWORD = os.getenv("ADMIN_PASSWORD")

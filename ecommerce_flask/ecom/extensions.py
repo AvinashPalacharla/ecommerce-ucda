@@ -19,6 +19,7 @@ from flask_basicauth import BasicAuth
 from ecom.constants import CACHE_CLEAR_SAFE_SUFFIX, CACHE_INDEFINETLY
 import os
 from werkzeug.middleware.profiler import ProfilerMiddleware
+
 # from flask_limiter import Limiter
 # from flask_limiter.util import get_remote_address
 
@@ -164,9 +165,7 @@ def init_extensions(app):
                 # +"?ssl_ca=C:\\projects\\sofac\\azure database\\BaltimoreCyberTrustRoot.crt.pem"
             },
             "basicAuth": {"enabled": True, "username": "admin", "password": "password"},
-            "ignore": [
-                "^/static/.*"
-            ],
+            "ignore": ["^/static/.*"],
             "endpointRoot": "api/profiler",
         }
 

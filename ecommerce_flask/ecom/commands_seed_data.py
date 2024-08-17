@@ -16,8 +16,7 @@ from ecom.constants import (
 )
 
 from ecom.auth.models import Role, User
-from ecom.extensions import  db
-
+from ecom.extensions import db
 
 
 def create_roles():

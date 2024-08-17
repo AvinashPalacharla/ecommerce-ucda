@@ -112,7 +112,7 @@ class Response:
             "403": Forbidden.description,
         }
         return error_msg.get(str(error_code)) or "Error"
-    
+
 
 def check_for_string(data):
     if not isinstance(data, str):
@@ -155,7 +155,53 @@ def check_for_password(password_text):
 class UserAlreadyExists(Exception):
     def __str__(self):
         return "User with same mailid already exist"
-    
+
+
 class UserDoesNotExist(Exception):
     def __str__(self):
         return "User does not exist"
+
+def generate_password():
+    try:
+        password = ""
+        special_chars = "!@#$&~"
+        while True:
+            password += random.choice(string.ascii_uppercase)
+            password += random.choice(string.ascii_lowercase)
+            password += random.choice(string.digits)
+            password += random.choice(special_chars)
+            i = random.randint(12, 15)
+
+            for i in range(0, i):
+                password += random.choice(
+                    string.ascii_uppercase
+                    + string.ascii_lowercase
+                    + string.digits
+                    + special_chars
+                )
+            password = "".join(random.sample(password, len(password)))
+            try:
+                check_for_password(password)
+                break
+            except Exception:
+                pass
+        return password
+    except Exception:
+        return None
+
+
+class PasswordSameException(Exception):
+    def __init__(self):
+        self.msg = "PasswordSame"
+        self.payload = f"New password can not be same as last {app.config['ALLOWED_FREQUENCY_TO_USE_SAME_PASSWORD']} password."
+
+
+class AuthExeption(Exception):
+    def __init__(
+        self, msg="AuthExeption", payload=None, update_failure=False, err_code=401
+    ):
+        self.msg = msg
+        self.payload = payload
+        self.update_failure = update_failure
+        self.err_code = err_code
+

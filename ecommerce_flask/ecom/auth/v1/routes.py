@@ -1,10 +1,12 @@
 from flask_restx import Namespace, Resource, reqparse
 import flask_praetorian
+from flask import current_app as app
 
 from ecom.utils import check_for_password
 from . import controllers
 
 api = Namespace("Auth", description="Auth related routes")
+
 
 @api.route("/login")
 class Login(Resource):
@@ -74,3 +76,23 @@ class ChangePassword(Resource):
         args = parser.parse_args()
 
         return controllers.verify_old_password_and_update_password(args["username"], args["old_password"], args["new_password"])
+    
+
+@api.route('/forgot_password')
+class ForgotPassword(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument("email", type=str, required=True, nullable=False)
+        args = parser.parse_args()
+
+        return controllers.forgot_password(args["email"])
+
+
+@api.route('/reset_password/<token>', endpoint='reset_password')
+class ResetPassword(Resource):
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument("token", location='view_args', type=str, required=True, nullable=False)
+        args = parser.parse_args()
+
+        return controllers.reset_password(args["token"])

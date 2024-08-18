@@ -15,6 +15,7 @@ from celery import Celery
 
 from flask_admin import Admin
 from flask_basicauth import BasicAuth
+from flask_mail import Mail
 
 from ecom.constants import CACHE_CLEAR_SAFE_SUFFIX, CACHE_INDEFINETLY
 import os
@@ -38,6 +39,7 @@ guard = Praetorian()
 compress = Compress()
 socketio = SocketIO()
 profiler = Profiler()
+mail = Mail()
 
 admin = Admin(url="/api/admin")
 basic_auth = BasicAuth()
@@ -85,6 +87,8 @@ def init_extensions(app):
 
     # marshmallow
     mm.init_app(app)
+
+    mail.init_app(app)
 
     # flask caching
     cache.init_app(app)

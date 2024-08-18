@@ -219,3 +219,17 @@ class User(db.Model):
         db.session.add(user)
         db.session.commit()
         return user
+
+
+class OTP(db.Model):
+    __tablename__ = "otp"
+    
+    id = Column(Integer, primary_key=True)
+    email = Column(String(120), nullable=False, unique=True)
+    otp = Column(Integer, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    def __init__(self, email, otp):
+        self.email = email
+        self.otp = otp
+

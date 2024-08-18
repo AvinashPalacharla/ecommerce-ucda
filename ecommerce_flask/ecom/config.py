@@ -34,6 +34,7 @@ class BaseConfig(object):
 
     BASIC_AUTH_USERNAME = os.getenv("ADMIN_USERNAME")
     BASIC_AUTH_PASSWORD = os.getenv("ADMIN_PASSWORD")
+    PASSWORD_CHANGE_REQUIRED_DAYS = int(os.getenv("PASSWORD_CHANGE_REQUIRED_DAYS"))
 
     """ if APP_DB_USE_SSL:
         SQLALCHEMY_ENGINE_OPTIONS = {
@@ -60,6 +61,15 @@ class BaseConfig(object):
     CACHE_DEFAULT_TIMEOUT = int(os.getenv("CACHE_TIMEOUT", "120"))
 
     DEFAULT_PASSWORD = os.getenv("DEFAULT_PASSWORD", "Dummy@1234567")
+
+
+    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in TRUTHY_VALUES
+    MAIL_USE_SSL = os.environ.get('MAIL_USE_SSL', 'false').lower() in TRUTHY_VALUES
+
 
     # flask-praetorian variables
     JWT_ACCESS_LIFESPAN = {"minutes": int(os.environ.get("ACCESS_TOKEN_EXPIRY_MINS"))}
